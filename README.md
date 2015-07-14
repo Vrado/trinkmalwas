@@ -1,4 +1,4 @@
 # trinkmalwas
 
-Simple MEAN Stack Application for educationak purposes.
-Application was created within 3 Weeks for a univerity project.
+Simple MEAN Stack Application for educational purposes.
+Application was created within 3 weeks for a univerity project.
