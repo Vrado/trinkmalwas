@@ -1,0 +1,406 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+
+/************************************/
+/*          Navigationsleiste       */
+/************************************/
+/* Schriftart Schriftgröße Schriftfarbe und Text Schattierung */
+.navbar-default .navbar-brand {
+	font-family: 'Oswald', Arial, Verdana;
+	font-size: 24px;
+	color:#3184BF;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Durchsichtigkeit Hintergrundfarbe und Rahmen */
+.navbar{
+	opacity: 0.9;
+	background:#FFFFFF;
+	border: 0px;
+}
+
+/* Farbe Schriftgröße und Schriftart der Links in der Navigationsleiste */
+.navbar .nav > li > a {
+    color: #3184BF;
+	font-size:16px;
+	font-family: 'Oswald', Arial, Verdana;
+
+}
+
+/* Effekt wenn ein Link in der Navigationsleiste aktiv ist oder man drüber geht */
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+  color: #FFFFFF;
+  background-color: #3184BF;
+}
+
+
+/********************************/
+/*          LoginDropdown       */
+/********************************/
+/* Festlegung der größe der Abastände und der Hintergrundfarbe */
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,0.8);
+}
+
+/* Schriftgröße im Help-Block */
+#login-dp .help-block{
+    font-size:12px    
+}
+
+/* Hintergrundfarbe Rahmenfarbe und Rahmendicke Abstände */
+#login-dp .bottom{
+    background-color:rgba(255,255,255,0.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+
+/* Abstände der Social-Buttons */
+#login-dp .social-buttons{
+    margin:12px 0    
+}
+
+/* Größe der Social-Buttons (link) */
+#login-dp .social-buttons a{
+    width: 49%;
+}
+
+/* unterer Abstand der form-group */
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+
+/* Farbe des Facebook-Buttons */
+.btn-fb{
+    color: #fff;
+    background-color:#3b5998;
+}
+
+/* Farbe des Facebook-Buttons beim drüberfahren */
+.btn-fb:hover{
+    color: #fff;
+    background-color:#496ebc 
+}
+
+/* Farbe des Twitter-Buttons*/
+.btn-tw{
+    color: #fff;
+    background-color:#55acee;
+}
+
+/* Farbe des Twitter-Buttons beim drüberfahren */
+.btn-tw:hover{
+    color: #fff;
+    background-color:#59b5fa;
+}
+
+/* Festlegung des Stylebereichs */
+@media(max-width:768px){
+	/* Setzung der Hintergrundfarbe */
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+	
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+}
+
+
+/********************************/
+/*          Start-Section       */
+/********************************/
+/* Festlegung der Eigenschaften der Start-Section */
+.start-section {
+	height: auto !important;
+	min-height: 100%;
+	overflow: hidden;
+	padding-top: 50px;
+	background-size: cover;
+	background: url(Wasser.jpg) no-repeat center;
+}
+
+/* Eigenschaften der Überschrift 1. Grades */
+.start-section h1 {
+	font-family: 'Oswald', Arial, Verdana;
+	font-size: 50px;
+	color: white;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Eigenschaften der Überschrift 2. Grades */
+.start-section h2 {
+	font-family: 'Oswald', Arial, Verdana;
+	font-size: 30px;
+	color: #000000;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Eigenschaften der Überschrift 3. Grades */
+.start-section h3 {
+	font-family: 'Roboto', Arial, Verdana;
+	font-size: 18px;
+	color: #FFFFFF;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Eigenschaften des head-Bereichs */
+.head {
+	background: #3184BF;
+	height: auto !important;
+	color: #F0F0F0;
+	padding-bottom: 20px;
+}
+
+/* Eigenschaften der journal-Bereichs */
+.journal {
+	padding-top: 10px;
+}
+
+
+/************************************/
+/*          Statistic-Section       */
+/************************************/
+/* Festlegung der Eigenschaften der Statistics-Section */
+.statistics-section {
+	height: auto !important;
+	min-height: 100%;
+	overflow: hidden;
+	padding-top: 50px;
+	background-size: cover;
+	background: url(Wasser.jpg) no-repeat center;
+}
+
+/* Eigenschaften der Überschrift 1. Grades */
+.statistics-section h1 {
+	font-family: 'Oswald', Arial, Verdana;
+	font-size: 50px;
+	color: white;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Eigenschaften der Überschrift 2. Grades */
+.about-section h2 {
+	font-family: 'Roboto', Arial, Verdana;
+	font-size: 30px;
+	color: #000000;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Eigenschaften der Überschrift 3. Grades */
+.statistics-section h3 {
+	font-family: 'Roboto', Arial, Verdana;
+	font-size: 18px;
+	color: #FFFFFF;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+
+/********************************/
+/*          About-Section       */
+/********************************/
+/* Festlegung der Eigenschaften der About-Section */
+.about-section {
+	height: auto !important;
+	min-height: 100%;
+	overflow: hidden;
+	padding-top: 50px;
+	background-size: cover;
+	background: url(Wasser.jpg) no-repeat center;
+}
+
+/* Eigenschaften der Überschrift 1. Grades */
+.about-section h1 {
+	font-family: 'Oswald', Arial, Verdana;
+	font-size: 50px;
+	color: white;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Eigenschaften der Überschrift 2. Grades */
+.about-section h2 {
+	font-family: 'Roboto', Arial, Verdana;
+	font-size: 30px;
+	color: #000000;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Eigenschaften der Überschrift 3. Grades */
+.about-section h3 {
+	font-family: 'Roboto', Arial, Verdana;
+	font-size: 18px;
+	color: #FFFFFF;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Eigenschaften der Paragraphen in der About-Section */
+.about-section p {
+    font-family: 'Roboto',Arial, Verdana;
+    color: #000000;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Eigenschaften des teamMember Übersicht */
+.teamMember{
+    padding: 20px 0;
+	text-align: center;
+}
+.teamMember > div > div{
+	padding: 10px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	transition: 0.2s;
+}
+.teamMember > div:hover > div{
+	margin-top: -10px;
+	border: 1px solid rgb(200, 200, 200);
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+	background: rgba(200, 200, 200, 0.1);
+	transition: 0.5s;
+}
+
+
+/* Icons der Sozialen-Netze */
+ul.socialIcon {
+	list-style: none;
+	display: inline;
+	margin-left:0 !important;
+	padding: 0;
+}
+
+ul.socialIcon li {
+	display: inline;
+	margin: 0 5px;
+}
+
+/* Facebook Icon Hintergrundfarbe beim drüberfahren */
+.socialIcon a.fbIcon:hover {
+	background-color:#3B5998;
+}
+/* Twitter Icon Hintergrundfarbe beim drüberfahren */
+.socialIcon a.twIcon:hover {
+	background-color:#33CCFF;
+}
+/* LinkIn Icon Hintergrundfarbe beim drüberfahren */
+.socialIcon a.liIcon:hover {
+	background-color:#007BB7;
+}
+.socialIcon a.fbIcon:hover i, .socialIcon a.twIcon:hover i, .socialIcon a.liIcon:hover i {
+	color:#FFFFFF;
+}
+
+/* Dreheffekt für die Icons */
+.twist li a {
+	display:inline-block;
+	position:relative;
+	margin:0 auto 0 auto;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+	text-align:center;
+	width: 50px;
+	height: 50px;
+	font-size:20px;
+}
+.twist li i {
+	margin:0;
+	line-height:50px;
+	text-align: center;
+}
+
+/* 360 Grad drehung der Icons beim drüberfahren und Geschwindigkeit*/
+.twist li a:hover i, .triggeredHover {
+	-moz-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	-ms--transform: rotate(360deg);
+	transform: rotate(360deg);
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	transition: all 0.2s;
+}
+.twist i {
+	color: #fff;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+	-o-transition: all 0.8s;
+	-ms-transition: all 0.8s;
+	transition: all 0.8s;
+}
+
+.twist a {
+ background-color: #939393; 
+}
+
+
+/*********************************/
+/*          Contact-Section      */
+/*********************************/
+/* Festlegung der Eigenschaften der Contact-Section */
+.contact-section {
+	height: auto !important;
+	min-height: 100%;
+	overflow: hidden;
+	padding-top: 70px;
+	background-size: cover;
+	background: url(Wasser.jpg) no-repeat center;
+	padding-bottom: 10px;
+}
+
+/* Footer Eigenschaften */
+.footer {
+	background: #3184BF;
+	height: auto !important;
+	min-height: 230px;	
+}
+
+/* Header-Eigenschaften  */
+.header {
+    color: #3184BF;
+    font-size: 27px;
+    padding: 10px;
+}
+
+/* Schriftgröße und Farbe bei Bigicon */
+.bigicon {
+    font-size: 30px;
+    color: #3184BF;
+}
+
+
+/**********************************/
+/*          Footer der Seite      */
+/**********************************/
+/* Festlegung der Eigenschaften des Footers */
+#footer { 
+    position: relative;
+    margin-top: -50px;
+    height: 50px;
+    clear:both;
+    background: #3184BF;
+    opacity: 0.9;
+    text-align: center;
+    padding-top: 10px;
+} 
+
+/* Eigenschaften von Paragraph im Footer */
+#footer p {
+	font-family: 'Roboto', Arial, Verdana;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Farbe der Social-Buttons im Footer */
+.social {
+	color: #FFFFFF;
+}

@@ -1,0 +1,354 @@
+<!doctype html>
+
+<!-- Zuweisung des AngularJS-Moduls -->
+<html ng-app="Drink">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimiert für mobile Geräte -->
+
+	<title>Trink mal was!</title>
+
+	<!-- CSS-Klassen, die wir verwenden möchten -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"><!-- Minimiertes Bootstrap laden-->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"><!--Icon und CSS-Sammlung von font-awsome laden-->
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oswald' type='text/css'><!-- Oswald Schriftart von Google laden -->
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:500' type='text/css'><!-- Roboto Schriftart von Google laden -->
+	<link rel="stylesheet" href="css/template.css"><!-- Unsere definierten Eigenschaften aus der template.css -->
+	
+
+
+	<!-- JavaScript-Referenzen -->
+	<script src="js/angular.min.js"></script><!-- AngularJS als minimierte Variante -->
+	<script src="js/controllers/main.js"></script> <!-- Unser MainController -->
+	<script src="js/services/drinks.js"></script> <!-- Der Service, mit welchem wir die Promise-Objekte erstellen -->
+	<script src="js/core.js"></script> <!-- Die Hauptapplikation, in welcher wir auf Controller und Services referenzieren -->
+	<script src="js/jquery.js"></script> <!-- JQuery ist notwendig für Bootstrap-->
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/scrolling-nav.js"></script> <!-- load scolling-nav.js -->
+	<script src="js/bootstrap.min.js"></script> <!-- Die Bootstrap JS  -->
+	<!--<script src="../../assets/js/vendor/holder.js"></script> -->
+</head>
+
+<!-- Deklaration des zu nutzenden Controllers -->
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-controller="mainController">
+	
+	<!-- Navigationsleiste -->
+	<!-- Klasse fixed-top sorgt dafür, dass die Navigationsleiste immer fix am oberen Ende angezeigt wird -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">TrinkMalWas</a>
+            </div>
+			<!-- /.navbar-header -->
+
+            <!-- Links der Navigationsleiste-->
+            <div class="navbar-collapse collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a class="page-scroll" href="#page-top">Start</a></li>
+                    <li><a class="page-scroll" href="#statistics">Statistiken</a></li>
+                    <li><a class="page-scroll" href="#about">Über Uns</a></li>
+                    <li><a class="page-scroll" href="#contact">Kontakt</a></li>
+                </ul>
+            	<ul class="nav navbar-nav navbar-right">
+        			<li class="dropdown">
+          				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+						<ul id="login-dp" class="dropdown-menu">
+							<li>
+				 				<div class="row">
+									<div class="col-md-12">
+										Login via
+										<div class="social-buttons">
+											<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+											<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+										</div>
+										<!-- /.social-buttons-->
+                            			oder
+								 		<form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+											<div class="form-group">
+												<label class="sr-only" for="eingabeEmail">Email Adresse</label>
+												<input type="email" class="form-control" id="eingabeEmail2" placeholder="Email Adresse" required>
+											</div>
+											<!-- /.form-group-->
+											<div class="form-group">
+												<label class="sr-only" for="eingabePasswort">Passwort</label>
+											 	<input type="password" class="form-control" id="eingabePasswort2" placeholder="Passwort" required>
+                                             	<div class="help-block text-right"><a href="">Passwort vergessen?</a></div>
+											</div>
+											<!-- /.form-group-->
+											<div class="form-group">
+												<button type="submit" class="btn btn-primary btn-block">Anmelden</button>
+											</div>
+											<!-- /.form-group-->
+											<div class="checkbox">
+											 	<label>
+											 	<input type="checkbox"> Angemeldet bleiben
+											 	</label>
+											</div>
+											<!-- /.checkbox -->
+								 		</form>
+									</div>
+									<!-- /.col-md-12-->
+									<div class="bottom text-center">
+										Neu hier? <a href="#"><b>Registrieren</b></a>
+									</div>
+									<!-- /.bottom text-center -->
+				 				</div>
+				 				<!-- /.row -->
+							</li>
+      					</ul>
+          			</li>
+          		</ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+	
+    <!-- Start -->
+	<section id="start" class="start-section">
+		<!-- Header und Counter für die Anzahl der Elemente -->
+		<section id="today" class="head">
+			<div class="container">
+				<h1>Heute getrunken <span class="label label-info">{{ getToday() }} Liter</span></h1> <!-- drinks.length zählt die Elemente-->
+				<h3>Pro Tag sollten mindestens 2 Liter Wasser getrunken werden!</h3>
+				</br>
+				</br>
+				<!-- Hier werden die Drinks-Elemente erstellt -->
+				<form class="form-inline">
+					<!--Bootstrap Styling und die Verwendung von ng-model mit formData um den Inhalt zuzuweisen.-->
+					<div class="form-group">
+						<label class="sr-only" for="imputDrink">Was hast du getrunken?</label>
+						<input type="text" class="form-control" id="wasGetrunken" placeholder="Was hast du getrunken?" ng-model="formData.text" >
+					</div>
+					<div class="form-group">
+						<label class="sr-only" for="impuMenge">Wieviel Liter?</label>
+						<input type="text" class="form-control" id="menge" placeholder="Wieviel Liter" ng-model="formData.menge">
+					</div>
+
+
+
+					<div class="form-group">
+						<label class="sr-only" for="impuComment">Kommentar</label>
+						<input type="text" class="form-control" id="kommentar" placeholder="Kommentar" ng-model="formData.comment">
+					</div>
+					<!-- Der Button verschickt unsere Daten und erstellt ein neues Drink-Element -->
+					<button type="submit" class="btn btn-success" ng-click="createDrink()">Hinzufügen</button>
+				</form>	
+			</div>
+			<!-- /.container -->
+		</section>
+		<!-- /.today-->
+		<!-- Letzten Getränke-->
+		<div class="container">
+			<div class="journal">
+				<h2>Zuletzt getrunken</h2>
+				<div class="text-center" >
+					<!--Tabelle mit den Einträgen aus der Datenbank-->
+					<table class="table" >
+						<thead>
+							<tr>
+								<th>Getränk</th>
+								<th>Menge</th>
+								<th>Datum</th>
+								<th>Kommentar</th>
+								<th>Aktion</th>
+							</tr>
+						</thead>
+						<tbody ng-repeat="drink in drinks">
+							<tr>
+								<!-- Tabellarische Anzeige aller Elemente -->
+								<td>{{drink.text}}</td>
+								<td>{{drink.menge}} Liter</td>
+								<td>{{drink.zeit| date:'medium'}}</td>   <!-- filtert das Datum -->
+								<td>{{drink.comment}}</td>
+								<!-- Mit Click auf den Button wird das jeweilige Element gelöscht -->
+								<td><button type="submit" class="btn btn-primary btn-sm" ng-click="deleteDrink(drink._id)">delete</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- /.text-center -->
+			</div>
+			<!-- /.journal -->
+		</div>
+		<!-- /.container -->				
+	</section>	
+	<!-- /.start -->
+	
+	<!-- Statistiken section -->
+	<section id="statistics" class="statistics-section">
+		<section id="statistics-header" class="head">
+			<div class="container">
+				<h1>Statistiken</h1>
+				<h3>Hier können Sie sich Ihre Trink-Statistiken ansehen.</h3>
+			</div>
+			<!-- /.container -->
+		</section>
+		<!-- /.statistics-header -->
+		<div class="container">
+            <h2>Gesamtmenge getrunken: <span class="label label-danger">{{ getTotal() }} Liter </span></h2>
+        </div>
+		<!-- /.container -->
+        <div class="container">
+            <h2>Gesamte Einträge: <span class="label label-danger">{{ drinks.length }} Einträge </span></h2>
+        </div>
+		<!-- /.container -->
+        <div class="container">
+            <h2>Filter-Test: <span class="label label-danger">{{test() | date:'short'}}</span></h2>
+        </div>
+		<!-- /.container -->
+	</section>
+	<!-- /.statistics -->
+	
+	<!-- Über Uns section -->
+	<section id="about" class="about-section">
+		<section id="about-header" class="head">
+			<div class="container">
+				<h1>Das Team</h1>
+				<h3>Kurze Info zu den Entwicklern der Seite</h3>
+			</div>
+			<!-- /.container -->		 				
+		</section>
+		<!-- /.about-header -->
+			<div class="container">
+				<div class="row teamMember">
+					<!-- Anzeige des Teams als Steckbriefkarten mit Effekt -->
+					<div class="col-md-4">
+			    		<div>
+							<img src="images/11.jpg" alt="Konrad Konted" class="img-circle img-thumbnail">
+							<h2>Konrad Kontek</h2>
+							<p>Lead Software Architect</p>
+							<ul class="socialIcon twist">
+			                    <li><a href="#" class="fbIcon" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+			                    <li><a href="#" class="twIcon" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+			                    <li><a href="#" class="liIcon" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+			                </ul>					
+						</div>
+					</div>
+					<!-- /.col-md-4 -->
+
+					<div class="col-md-4">
+			    		<div>
+							<img src="images/22.jpg" alt="Argirios Kehagias" class="img-circle img-thumbnail">
+							<h2>Argirios Kehagias</h2>
+							<p>Lead Designer</p>
+							<ul class="socialIcon twist">
+			                    <li><a href="#" class="fbIcon" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+			                    <li><a href="#" class="twIcon" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+			                    <li><a href="#" class="liIcon" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+			                </ul>					
+						</div>
+					</div>
+					<!-- /.col-md-4-->
+
+					<div class="col-md-4">
+			    		<div>
+							<img src="images/33.jpg" alt="Thomas Frank" class="img-circle img-thumbnail">
+							<h2>Thomas Frank</h2>
+							<p>Lead Engineer</p>
+							<ul class="socialIcon twist">
+			                    <li><a href="#" class="fbIcon" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+			                    <li><a href="#" class="twIcon" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+			                    <li><a href="#" class="liIcon" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+			                </ul>					
+						</div>
+					</div>
+					<!-- /.col-md-4 -->
+				</div>
+				<!-- /.row teamMember -->
+			</div>
+			<!-- /.container -->
+	</section>
+	
+	<!-- Kontakt-Section -->
+	<section id="contact" class="contact-section">
+		<div class="container">
+    		<div class="row">
+        		<div class="col-md-8 col-md-offset-2">
+		            <div class="well well-lg">
+						<!-- Formular um in Kontakt zu uns zu treten -->
+		                <form class="form-horizontal" method="post">
+		                    <fieldset>
+		                        <legend class="text-center header"><i class="fa fa-glass bigicon"></i> Kontaktiere uns!</legend>
+		                        <div class="form-group">
+		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+		                            <div class="col-md-8">
+		                                <input id="fname" name="name" type="text" placeholder="Dein Vorname" class="form-control">
+		                            </div>
+									<!-- /.col-md-8 -->
+		                        </div>
+								<!-- /.form-group -->
+		                        <div class="form-group">
+		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+		                            <div class="col-md-8">
+		                                <input id="lname" name="name" type="text" placeholder="Dein Nachname" class="form-control">
+		                            </div>
+									<!-- /.col-md-8 -->
+		                        </div>
+								<!-- /.form-group -->
+		                        <div class="form-group">
+		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+		                            <div class="col-md-8">
+		                                <input id="email" name="email" type="text" placeholder="E-Mailadresse" class="form-control">
+		                            </div>
+									<!-- /.col-md-8 -->
+		                        </div>
+								<!-- /.form-group -->
+		                        <div class="form-group">
+		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+		                            <div class="col-md-8">
+		                                <input id="phone" name="phone" type="text" placeholder="Telefon" class="form-control">
+		                            </div>
+									<!-- /.col-md-8 -->
+		                        </div>
+								<!-- /.form-group -->
+		                        <div class="form-group">
+		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+		                            <div class="col-md-8">
+		                                <textarea class="form-control" id="message" name="message" placeholder="Schreib uns! Wir geben unser Bestes, dir innerhalb von 3 Tagen zu antworten." rows="7"></textarea>
+		                            </div>
+									<!-- /.col-md-8 -->
+		                        </div>
+								<!-- /.form-group -->
+		                        <div class="form-group">
+		                            <div class="col-md-12 text-center">
+		                                <button type="submit" class="btn btn-primary btn">Absenden</button>
+		                            </div>
+									<!-- /.col-md-12 -->
+                        		</div>
+								<!-- /.form-group -->
+                    		</fieldset>
+                		</form>
+						<!-- /.form-horizontal -->
+					</div>
+					<!-- /.well well-lg -->
+            	</div>
+				<!-- /.col-md-8 col-md-offset-2 -->
+        	</div>
+			<!-- /.row -->
+    	</div>
+		<!-- /.container -->
+	</section>
+	<!-- /.contact -->
+	
+	<!-- Footer der Seite -->
+	<div id="footer">
+		<div id="social">
+			<p>
+				©TrinkMalWas | Konrad Kontek&nbsp;&nbsp;&nbsp;Argirios Kehagias&nbsp;&nbsp;&nbsp;Thomas Frank | Kontaktiert uns!
+				<a href="#"><i id="socialFooter" class="fa fa-facebook-square fa-2x social"></i></a>
+		        <a href="#"><i id="socialFooter" class="fa fa-twitter-square fa-2x social"></i></a>		
+			</p>
+		</div>
+		<!-- /.social -->
+	</div>
+	<!-- /.footer -->
+</body>
+</html>

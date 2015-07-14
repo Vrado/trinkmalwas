@@ -1,0 +1,14 @@
+{
+  "name"         : "Trinkmalwas",
+  "version"      : "0.2.0",
+  "description"  : "Eine App, welche die Flüssgkeitsaufnahme kontrolliert",
+  "main"         : "server.js",
+  "author"       : "WINF SWT Projektteam",
+  "dependencies" : {
+    "express"         : "~4.6.1",
+    "mongoose"        : "~3.8.13",
+    "morgan"          : "~1.1.1",
+    "body-parser"     : "~1.4.3",
+    "method-override" : "~2.1.1"
+  }
+}
